@@ -1,0 +1,66 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build main/active file",
+            "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "${fileDirname}\\output\\library.a",
+                "-o",
+                "${fileDirname}\\output\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Application build process."
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: g++.exe build of the dependency library",
+            "command": [
+                "mkdir library;",
+                "cd library;",
+                "g++ -c -g ${fileDirname}\\library\\*.cpp;",
+                "ar rcs ${fileDirname}\\output\\library.a ${fileDirname}\\output\\library\\*.o"
+            ],
+            "options": {
+                "cwd": "${fileDirname}\\output"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Library build process."
+        },
+        {
+            "label": "Project build process",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "C/C++: g++.exe build of the dependency library",
+                "C/C++: g++.exe build main/active file"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "Global project build process"
+        }
+    ],
+    "version": "2.0.0"
+}
