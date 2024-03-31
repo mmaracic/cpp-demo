@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include ".\library\addition.hpp"
-#include ".\library\subtraction.hpp"
+#include "addition.hpp"
+#include "subtraction.hpp"
 
 using namespace std;
 

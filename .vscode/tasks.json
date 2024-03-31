@@ -10,7 +10,9 @@
                 "${file}",
                 "${fileDirname}\\output\\library.a",
                 "-o",
-                "${fileDirname}\\output\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\output\\${fileBasenameNoExtension}.exe",
+                "-I",
+                "${fileDirname}\\library"
             ],
             "options": {
                 "cwd": "${fileDirname}"
